@@ -5,7 +5,7 @@
 {% for item in data %}
 <h3>Action # {{item["id"]}}</h3>
     <table class="table">
-  <thead class="table-light">
+  <thead class="table-secondary">
     <tr>
       <th scope="col">Title of acticity</th>
       <th scope="col">Team leader</th>
@@ -16,11 +16,11 @@
   </thead>
   <tbody>
     <tr class="danger">
-      <th scope="row" class="danger">{{item["job"].capitalize()}}</th>
-      <td>{{item["team_leader"]}}</td>
-      <td>{{item["work_size"]}}</td>
-      <td>{{item["collaborators"]}}</td>
-      <td class="danger">{{'Is not finished' if item["is_finished"] else 'Is finished'}}</td>
+      <th scope="row" class="table-primary">{{item["job"].capitalize()}}</th>
+      <td class="table-primary">{{item["team_leader"]}}</td>
+      <td class="table-primary">{{item["work_size"]}}</td>
+      <td class="table-primary">{{item["collaborators"]}}</td>
+      <td class="table-danger">{{'Is not finished' if item["is_finished"] else 'Is finished'}}</td>
 
     </tr>
   </tbody>
