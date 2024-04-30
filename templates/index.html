@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3><p align="center">Works log</p></h3>
+{% for item in data %}
+<h3>Action # {{item["id"]}}</h3>
+    <table class="table">
+  <thead class="table-light">
+    <tr>
+      <th scope="col">Title of acticity</th>
+      <th scope="col">Team leader</th>
+      <th scope="col">Duration</th>
+      <th scope="col">List of collaborators</th>
+        <th scope="col">Is finished</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="danger">
+      <th scope="row" class="danger">{{item["job"].capitalize()}}</th>
+      <td>{{item["team_leader"]}}</td>
+      <td>{{item["work_size"]}}</td>
+      <td>{{item["collaborators"]}}</td>
+      <td class="danger">{{'Is not finished' if item["is_finished"] else 'Is finished'}}</td>
+
+    </tr>
+  </tbody>
+</table>
+{% endfor %}
+{% endblock %}
