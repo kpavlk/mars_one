@@ -2,6 +2,9 @@
 
 {% block content %}
 <h3><p align="center">Works log</p></h3>
+{% if current_user.is_authenticated %}
+    <a href="jobs" class="btn btn-secondary">Add job</a>
+{% endif %}
 {% for item in data %}
 <h3>Action # {{item["id"]}}</h3>
     <table class="table">
@@ -20,10 +23,20 @@
       <td class="table-primary">{{item["team_leader"]}}</td>
       <td class="table-primary">{{item["work_size"]}}</td>
       <td class="table-primary">{{item["collaborators"]}}</td>
-      <td class="table-danger">{{'Is not finished' if item["is_finished"] else 'Is finished'}}</td>
+      <td class="table-{{'success' if item['is_finished'] else 'danger'}}">{{'Is finished' if item["is_finished"] else 'Is not finished'}}</td>
 
     </tr>
   </tbody>
 </table>
+{% if current_user.is_authenticated and current_user.id == item["team_leader"] %}
+    <div>
+        <a href="/jobs/{{ item['id'] }}" class="btn btn-warning">
+            Edit job
+        </a>
+        <a href="/jobs_delete/{{ item['id'] }}" class="btn btn-danger">
+            Delete job
+        </a>
+    </div>
+{% endif %}
 {% endfor %}
 {% endblock %}
